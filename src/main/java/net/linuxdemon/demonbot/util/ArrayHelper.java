@@ -1,0 +1,32 @@
+package net.linuxdemon.demonbot.util;
+
+public class ArrayHelper {
+    public static <T> boolean contains(final T[] array, final T v) {
+        if (v == null) {
+            for (final T e : array) {
+                if (e == null) {
+                    return true;
+                }
+            }
+        } else {
+            for (final T e : array) {
+                if (e == v || v.equals(e)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static <T> String join(final T[] array, String s) {
+        String out = "";
+        if (array.length == 0) {
+            return "";
+        }
+        for (Object item : array) {
+            out += item + s;
+        }
+        return out.substring(0, out.length() - s.length());
+    }
+}

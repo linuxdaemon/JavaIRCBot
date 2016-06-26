@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'net.linuxdemon.demonbot.DemonBot'
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+dependencies {
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    compile 'org.apache.logging.log4j:log4j-api:2.0.2'
+    compile 'org.apache.logging.log4j:log4j-core:2.0.2'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    runtime 'org.postgresql:postgresql:9.4.1208'
+}
+jar {
+    manifest {
+        attributes('Main-Class': mainClassName,
+                'Class-Path': "lib/json-simple-1.1.1.jar lib/postgresql-9.4-1201.jdbc41.jar lib/log4j-api-2.0.2.jar lib/log4j-core-2.0.2.jar lib/log4j2.xml lib/commons-lang3-3.4.jar"
+        )
+    }
+    baseName = 'DemonBot'
+    version = '0.1'
+}
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
